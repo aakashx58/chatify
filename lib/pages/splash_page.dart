@@ -7,6 +7,7 @@ import 'package:get_it/get_it.dart';
 //services
 import '../services/navigation_service.dart';
 import '../services/media_service.dart';
+import '../services/cloud_storage_service.dart';
 
 class SplashPage extends StatefulWidget {
   final VoidCallback onInitializationComplete;
@@ -60,6 +61,9 @@ class _SplashPageState extends State<SplashPage> {
     );
     GetIt.instance.registerSingleton<MediaService>(
       MediaService(),
+    );
+    GetIt.instance.registerSingleton<CloudStorageService>(
+      CloudStorageService(),
     );
   }
 }
