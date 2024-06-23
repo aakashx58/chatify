@@ -1,6 +1,14 @@
-import 'package:chatify/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
+//packages
+// import 'package:firebase_analytics/firebase_analytics.dart';
+
+//services
+import './services/navigation_service.dart';
+
+//pages
+import 'package:chatify/pages/splash_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +21,33 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SplashPage(key: UniqueKey(), onInitializationComplete: () {}),
+      home: SplashPage(
+        key: UniqueKey(),
+        onInitializationComplete: () {
+          runApp(
+            MainApp(),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class MainApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Chatify',
+      theme: ThemeData(
+        // backgroundColor: Color.fromRGBO(36, 35, 49, 1.0),
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: Color.fromRGBO(36, 35, 49, 1.0)),
+        scaffoldBackgroundColor: Color.fromRGBO(36, 35, 49, 1.0),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: Color.fromRGBO(36, 35, 49, 1.0),
+        ),
+        // navigatorKey: NavigationService.navigatorKey,
+      ),
     );
   }
 }

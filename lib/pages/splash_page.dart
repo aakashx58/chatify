@@ -22,8 +22,12 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    _setup().then(
-      (_) => widget.onInitializationComplete(),
+    Future.delayed(Duration(seconds: 1)).then(
+      (_) {
+        _setup().then(
+          (_) => widget.onInitializationComplete(),
+        );
+      },
     );
   }
 
@@ -32,7 +36,9 @@ class _SplashPageState extends State<SplashPage> {
     return MaterialApp(
       title: 'Chatify',
       theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueGrey)),
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: Color.fromRGBO(36, 35, 49, 1.0)),
+      ),
       home: Scaffold(
         body: Center(
           child: Container(
