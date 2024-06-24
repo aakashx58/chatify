@@ -9,6 +9,7 @@ import './services/navigation_service.dart';
 
 //pages
 import 'package:chatify/pages/splash_page.dart';
+import 'package:chatify/pages/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -46,8 +47,12 @@ class MainApp extends StatelessWidget {
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: Color.fromRGBO(36, 35, 49, 1.0),
         ),
-        // navigatorKey: NavigationService.navigatorKey,
       ),
+      navigatorKey: NavigationService.navigatorKey,
+      initialRoute: '/login',
+      routes: {
+        '/login': (BuildContext _context) => LoginPage(),
+      },
     );
   }
 }
