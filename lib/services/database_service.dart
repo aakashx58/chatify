@@ -5,8 +5,8 @@ const String USER_COLLECTION = 'Users';
 const String CHAT_COLLECTION = 'Chats';
 const String MESSAGE_COLLECTION = 'Messages';
 
-class DataBaseService {
+class DatabaseService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  DataBaseService() {}
+  DatabaseService() {}
 }
