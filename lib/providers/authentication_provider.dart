@@ -1,4 +1,6 @@
 //packages
+import 'dart:html';
+
 import 'package:chatify/services/database_service.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -17,6 +19,18 @@ class AuthenticationProvider extends ChangeNotifier {
     _auth = FirebaseAuth.instance;
     _navigationService = GetIt.instance.get<NavigationService>();
     _databaseService = GetIt.instance.get<DatabaseService>();
+
+    // _auth.signOut();
+
+    _auth.authStateChanges().listen((_user) {
+      if (_user != null) {
+        // print("Logged in");
+        _databaseService.updateUserLastSeenTime(_user.uid);
+        _databaseService.getUser(_user.uid);
+      } else {
+        print("Not Authenticated");
+      }
+    });
   }
 
   Future<void> loginUsingEmailPassword(String _email, String _password) async {
