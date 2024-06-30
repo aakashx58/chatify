@@ -1,6 +1,4 @@
 //packages
-import 'dart:html';
-
 import 'package:chatify/services/database_service.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
