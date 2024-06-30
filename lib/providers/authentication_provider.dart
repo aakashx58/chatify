@@ -6,7 +6,6 @@ import 'package:get_it/get_it.dart';
 
 //services
 import '../services/navigation_service.dart';
-import '../services/navigation_service.dart';
 
 class AuthenticationProvider extends ChangeNotifier {
   late final FirebaseAuth _auth;

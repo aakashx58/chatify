@@ -1,5 +1,3 @@
-import 'package:chatify/pages/login_page.dart';
-import 'package:chatify/providers/authentication_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -11,11 +9,11 @@ import 'package:provider/provider.dart';
 import './services/navigation_service.dart';
 
 //providers
-// import './providers/authentication_provider.dart';
+import './providers/authentication_provider.dart';
 
 //pages
 import 'package:chatify/pages/splash_page.dart';
-// import 'package:chatify/pages/login_page.dart';
+import 'package:chatify/pages/login_page.dart';
 
 void main() {
   runApp(const MyApp());
