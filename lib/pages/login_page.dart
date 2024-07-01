@@ -1,16 +1,16 @@
-//packages
+//Packages
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:get_it/get_it.dart';
 
-//widgets
+//Widgets
 import '../widgets/custom_input_fields.dart';
 import '../widgets/rounded_button.dart';
 
-//providers
+//Providers
 import '../providers/authentication_provider.dart';
 
-//services
+//Services
 import '../services/navigation_service.dart';
 
 class LoginPage extends StatefulWidget {
@@ -36,7 +36,6 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     _deviceHeight = MediaQuery.of(context).size.height;
     _deviceWidth = MediaQuery.of(context).size.width;
-
     _auth = Provider.of<AuthenticationProvider>(context);
     _navigation = GetIt.instance.get<NavigationService>();
     return _buildUI();
@@ -46,7 +45,9 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: Container(
         padding: EdgeInsets.symmetric(
-            horizontal: _deviceWidth * 0.03, vertical: _deviceHeight * 0.02),
+          horizontal: _deviceWidth * 0.03,
+          vertical: _deviceHeight * 0.02,
+        ),
         height: _deviceHeight * 0.98,
         width: _deviceWidth * 0.97,
         child: Column(
@@ -55,11 +56,17 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _pageTitle(),
-            SizedBox(height: _deviceHeight * 0.04),
+            SizedBox(
+              height: _deviceHeight * 0.04,
+            ),
             _loginForm(),
-            SizedBox(height: _deviceHeight * 0.05),
+            SizedBox(
+              height: _deviceHeight * 0.05,
+            ),
             _loginButton(),
-            SizedBox(height: _deviceHeight * 0.02),
+            SizedBox(
+              height: _deviceHeight * 0.02,
+            ),
             _registerAccountLink(),
           ],
         ),
@@ -73,7 +80,10 @@ class _LoginPageState extends State<LoginPage> {
       child: Text(
         'Chatify',
         style: TextStyle(
-            color: Colors.white, fontSize: 40, fontWeight: FontWeight.w600),
+          color: Colors.white,
+          fontSize: 40,
+          fontWeight: FontWeight.w600,
+        ),
       ),
     );
   }
@@ -89,26 +99,24 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomTextFormField(
-              onSaved: (_value) {
-                setState(() {
-                  _email = _value;
-                });
-              },
-              regEx:
-                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
-              hintText: 'Email',
-              obscureText: false,
-            ),
+                onSaved: (_value) {
+                  setState(() {
+                    _email = _value;
+                  });
+                },
+                regEx:
+                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+                hintText: "Email",
+                obscureText: false),
             CustomTextFormField(
-              onSaved: (_value) {
-                setState(() {
-                  _password = _value;
-                });
-              },
-              regEx: r".{8,}",
-              hintText: 'Password',
-              obscureText: true,
-            ),
+                onSaved: (_value) {
+                  setState(() {
+                    _password = _value;
+                  });
+                },
+                regEx: r".{8,}",
+                hintText: "Password",
+                obscureText: true),
           ],
         ),
       ),
@@ -117,15 +125,13 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _loginButton() {
     return RoundedButton(
-      name: 'login',
+      name: "Login",
       height: _deviceHeight * 0.065,
       width: _deviceWidth * 0.65,
       onPressed: () {
         if (_loginFormKey.currentState!.validate()) {
-          // print("Email: $_email, Password: $_password");
           _loginFormKey.currentState!.save();
-          // print("Email: $_email, Password: $_password");
-          _auth.loginUsingEmailPassword(_email!, _password!);
+          _auth.loginUsingEmailAndPassword(_email!, _password!);
         }
       },
     );
@@ -133,11 +139,13 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _registerAccountLink() {
     return GestureDetector(
-      onTap: () {},
+      onTap: () => _navigation.navigateToRoute('/register'),
       child: Container(
         child: Text(
           'Don\'t have an account?',
-          style: TextStyle(color: Colors.blueAccent),
+          style: TextStyle(
+            color: Colors.blueAccent,
+          ),
         ),
       ),
     );

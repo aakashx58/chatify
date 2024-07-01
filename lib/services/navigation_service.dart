@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class NavigationService {
   static GlobalKey<NavigatorState> navigatorKey =
@@ -13,7 +12,7 @@ class NavigationService {
     navigatorKey.currentState?.pushNamed(_route);
   }
 
-  void navigaeteToPage(Widget _page) {
+  void navigateToPage(Widget _page) {
     navigatorKey.currentState?.push(
       MaterialPageRoute(
         builder: (BuildContext _context) {
@@ -21,6 +20,10 @@ class NavigationService {
         },
       ),
     );
+  }
+
+  String? getCurrentRoute() {
+    return ModalRoute.of(navigatorKey.currentState!.context)?.settings.name!;
   }
 
   void goBack() {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-//packages
+//Packages
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get_it/get_it.dart';
 
-//services
+//Services
 import '../services/navigation_service.dart';
 import '../services/media_service.dart';
 import '../services/cloud_storage_service.dart';
@@ -12,10 +12,16 @@ import '../services/database_service.dart';
 
 class SplashPage extends StatefulWidget {
   final VoidCallback onInitializationComplete;
-  const SplashPage({required this.onInitializationComplete, super.key});
+
+  const SplashPage({
+    required Key key,
+    required this.onInitializationComplete,
+  }) : super(key: key);
 
   @override
-  State<SplashPage> createState() => _SplashPageState();
+  State<StatefulWidget> createState() {
+    return _SplashPageState();
+  }
 }
 
 class _SplashPageState extends State<SplashPage> {
@@ -36,8 +42,8 @@ class _SplashPageState extends State<SplashPage> {
     return MaterialApp(
       title: 'Chatify',
       theme: ThemeData(
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: Color.fromRGBO(36, 35, 49, 1.0)),
+        backgroundColor: Color.fromRGBO(36, 35, 49, 1.0),
+        scaffoldBackgroundColor: Color.fromRGBO(36, 35, 49, 1.0),
       ),
       home: Scaffold(
         body: Center(

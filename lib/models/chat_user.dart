@@ -15,26 +15,25 @@ class ChatUser {
 
   factory ChatUser.fromJSON(Map<String, dynamic> _json) {
     return ChatUser(
-      uid: _json['uid'],
-      name: _json['name'],
-      email: _json['email'],
-      imageURL: _json['imageURL'],
-      lastActive: _json['lastActive'].toDate(),
+      uid: _json["uid"],
+      name: _json["name"],
+      email: _json["email"],
+      imageURL: _json["image"],
+      lastActive: _json["last_active"].toDate(),
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      // 'uid': uid,
-      'name': name,
-      'email': email,
-      'imageURL': imageURL,
-      'lastActive': lastActive,
+      "email": email,
+      "name": name,
+      "last_active": lastActive,
+      "image": imageURL,
     };
   }
 
   String lastDayActive() {
-    return "${lastActive.day}/${lastActive.month}/${lastActive.year}";
+    return "${lastActive.month}/${lastActive.day}/${lastActive.year}";
   }
 
   bool wasRecentlyActive() {

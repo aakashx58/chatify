@@ -6,11 +6,12 @@ class RoundedButton extends StatelessWidget {
   final double width;
   final Function onPressed;
 
-  const RoundedButton(
-      {required this.name,
-      required this.height,
-      required this.width,
-      required this.onPressed});
+  const RoundedButton({
+    required this.name,
+    required this.height,
+    required this.width,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class RoundedButton extends StatelessWidget {
         onPressed: () => onPressed(),
         child: Text(
           name,
-          style: TextStyle(fontSize: 20, color: Colors.white, height: 1.5),
+          style: TextStyle(fontSize: 22, color: Colors.white, height: 1.5),
         ),
       ),
     );
